@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Inksmith — Custom Print Platform (MVP)
 
-## Getting Started
+A functional print-on-demand storefront MVP. Users pick a printable product
+(stickers, apparel, photo prints, wall art, banners, gifts…), customise it in a
+built-in design studio, check out with a delivery address, and track the order
+from production to delivery.
 
-First, run the development server:
+Positioning: **Design → Print → Deliver.**
+
+## Features
+
+- **Catalog** — 16 products across 7 categories with search, category filters
+  and sorting (`/shop`).
+- **Product pages** — per-product options (material, size, finish), live bulk
+  pricing and quantity tiers (`/products/[slug]`).
+- **Design studio** — a drag-and-drop canvas editor (`/design?product=…`):
+  - Add editable **text** (fonts, size, colour, alignment)
+  - Upload **photos** and place/resize them
+  - Add **shapes** (rect / circle) and change background colour
+  - Ready-made **templates** per product
+  - Drag to move, corner handles to resize, arrow keys to nudge
+  - Undo / redo (⌘Z / ⌘⇧Z), and **Download PNG** export
+- **Cart** — persisted in `localStorage`, quantity editing, design thumbnails.
+- **Checkout** — validated contact + delivery form, delivery-speed options with
+  free-delivery threshold, order summary (`/checkout`).
+- **Order tracking** — status timeline (received → production → shipped →
+  delivered) with a demo "simulate next stage" control (`/orders/[id]`).
+- **How it works** — explains that Inksmith handles production and delivery
+  (`/how-it-works`).
+
+## Stack
+
+- Next.js 16 (App Router, Turbopack), React 19, TypeScript
+- Tailwind CSS v4
+- framer-motion, lucide-react
+- No backend — cart and orders live in `localStorage`. No auth, no payments
+  (out of scope for this MVP).
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+  app/
+    page.tsx               # Home
+    shop/page.tsx          # Catalog (search / filter / sort)
+    products/[slug]/page   # Product detail + customizer
+    design/page.tsx        # Design studio + product picker
+    cart/page.tsx
+    checkout/page.tsx
+    orders/page.tsx        # Order list
+    orders/[id]/page.tsx   # Order tracking
+    how-it-works/page.tsx
+  components/
+    design-studio.tsx      # Studio shell (state, history, cart)
+    studio/stage.tsx       # Interactive canvas (drag/resize/select)
+    studio/element-properties.tsx
+    design-preview.tsx     # Shared non-interactive design renderer
+    cart-provider.tsx      # Cart context + localStorage persistence
+  lib/
+    data.ts                # Categories, products, pricing
+    design.ts              # Templates, fonts, image downscaling
+    canvas-export.ts       # PNG export of a design
+    types.ts
+```
 
-## Learn More
+## Design model
 
-To learn more about Next.js, take a look at the following resources:
+Every product defines a design canvas (width × height), a safe margin, and
+which inputs are allowed (text / image / background). A design is a background
+colour plus a list of elements:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```ts
+type DesignElement =
+  | { kind: "text"; text; font; size; color; x; y; width; height; align }
+  | { kind: "image"; src; x; y; width; height; rotation }
+  | { kind: "shape"; shape: "rect" | "circle"; fill; x; y; width; height; rotation };
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The studio renders elements with container-query units (`cqw`) so the same
+design scales perfectly from a 24px cart thumbnail to the full editor. The PNG
+exporter re-draws the same layout onto a `<canvas>` for download.
