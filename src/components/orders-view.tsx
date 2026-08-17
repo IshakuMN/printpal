@@ -39,7 +39,7 @@ export function OrdersView() {
             to your door.
           </p>
           <Link
-            href="/shop"
+            href="/"
             className="mt-6 inline-flex h-12 items-center gap-2 rounded-full bg-ink-950 px-6 text-sm font-semibold text-white hover:bg-ink-800"
           >
             Start an order <ArrowRight size={15} />

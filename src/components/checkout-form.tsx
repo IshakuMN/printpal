@@ -136,7 +136,7 @@ export function CheckoutForm() {
             Your cart is empty. Add something to print first.
           </p>
           <Link
-            href="/shop"
+            href="/"
             className="mt-6 inline-flex h-12 items-center gap-2 rounded-full bg-ink-950 px-6 text-sm font-semibold text-white hover:bg-ink-800"
           >
             Browse products <ArrowRight size={15} />

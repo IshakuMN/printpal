@@ -298,7 +298,7 @@ export function OrderDetail({ orderId }: { orderId: string }) {
       </div>
 
       <div className="mt-8 text-center">
-        <Button variant="outline" onClick={() => router.push("/shop")}>
+        <Button variant="outline" onClick={() => router.push("/")}>
           Make another order <ArrowRight size={15} />
         </Button>
       </div>

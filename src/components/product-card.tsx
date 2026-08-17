@@ -1,60 +1,68 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { Heart } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { getCategory, getUnitPrice } from "@/lib/data";
 import { formatMoney } from "@/lib/format";
-import { Badge } from "./ui";
+import { cn } from "./ui";
 
 export function ProductCard({ product }: { product: Product }) {
   const category = getCategory(product.categoryId);
   const from = getUnitPrice(product, product.minQty);
-  const href = `/products/${product.slug}`;
+  const [saved, setSaved] = useState(false);
 
   return (
-    <Link
-      href={href}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-ink-200 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-ink-300 hover:shadow-soft"
-    >
-      <div className="relative aspect-[4/3] overflow-hidden bg-ink-50">
+    <Link href={`/products/${product.slug}`} className="group block">
+      <div className="relative overflow-hidden rounded-2xl bg-ink-100">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={product.image}
           alt={product.name}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="aspect-[4/5] w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
-        <span className="absolute top-3 left-3">
-          <Badge className="bg-white/90 backdrop-blur">{category?.shortName}</Badge>
+
+        {category && (
+          <span className="absolute top-2 left-2 rounded-full bg-white/90 px-2 py-0.5 text-[11px] font-bold text-ink-800 backdrop-blur">
+            {category.shortName}
+          </span>
+        )}
+
+        <button
+          type="button"
+          aria-label={saved ? "Remove from saved" : "Save product"}
+          onClick={(e) => {
+            e.preventDefault();
+            setSaved((s) => !s);
+          }}
+          className="absolute top-2 right-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/90 text-ink-700 backdrop-blur transition-colors hover:text-brand-600"
+        >
+          <Heart
+            size={16}
+            className={cn(saved && "fill-brand-600 text-brand-600")}
+          />
+        </button>
+
+        <span className="absolute bottom-2 left-2 rounded-lg bg-ink-950/90 px-2 py-1 text-sm font-bold text-white backdrop-blur">
+          from {formatMoney(from)}
         </span>
+
         {product.popular && (
-          <span className="absolute top-3 right-3">
-            <Badge className="bg-brand-600 text-white">Popular</Badge>
+          <span className="absolute bottom-2 right-2 rounded-full bg-brand-600 px-2 py-1 text-[11px] font-bold text-white">
+            Bestseller
           </span>
         )}
       </div>
-      <div className="flex flex-1 flex-col p-4">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <h3 className="font-display text-base font-semibold text-ink-950">
-              {product.name}
-            </h3>
-            <p className="mt-0.5 line-clamp-1 text-sm text-ink-500">
-              {product.tagline}
-            </p>
-          </div>
-          <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-ink-200 text-ink-500 transition-all group-hover:border-brand-600 group-hover:bg-brand-600 group-hover:text-white">
-            <ArrowUpRight size={14} />
-          </span>
-        </div>
-        <div className="mt-3 flex items-baseline justify-between text-sm">
-          <span className="text-ink-600">
-            from{" "}
-            <span className="font-semibold text-ink-950">
-              {formatMoney(from)}
-            </span>
-            <span className="text-ink-500"> / {product.unitLabel}</span>
-          </span>
-        </div>
+
+      <div className="mt-2 px-0.5">
+        <h3 className="line-clamp-1 text-sm font-semibold text-ink-950">
+          {product.name}
+        </h3>
+        <p className="mt-0.5 line-clamp-1 text-xs text-ink-500">
+          {product.tagline}
+        </p>
       </div>
     </Link>
   );

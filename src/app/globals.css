@@ -16,17 +16,17 @@
   --color-ink-900: #1f1f24;
   --color-ink-950: #121216;
 
-  --color-brand-50: #f5f3ff;
-  --color-brand-100: #ede9fe;
-  --color-brand-200: #ddd6fe;
-  --color-brand-300: #c4b5fd;
-  --color-brand-400: #a78bfa;
-  --color-brand-500: #8b5cf6;
-  --color-brand-600: #7c3aed;
-  --color-brand-700: #6d28d9;
-  --color-brand-800: #5b21b6;
-  --color-brand-900: #4c1d95;
-  --color-brand-950: #2e1065;
+  --color-brand-50: #fff1f2;
+  --color-brand-100: #ffe4e6;
+  --color-brand-200: #fecdd3;
+  --color-brand-300: #fda4af;
+  --color-brand-400: #fb7185;
+  --color-brand-500: #f43f5e;
+  --color-brand-600: #e11d48;
+  --color-brand-700: #be123c;
+  --color-brand-800: #9f1239;
+  --color-brand-900: #881337;
+  --color-brand-950: #4c0519;
 
   --shadow-soft: 0 1px 2px 0 rgb(18 18 22 / 0.04), 0 8px 24px -8px rgb(18 18 22 / 0.08);
   --shadow-lift: 0 2px 4px 0 rgb(18 18 22 / 0.06), 0 20px 40px -16px rgb(18 18 22 / 0.18);
@@ -39,7 +39,7 @@
   }
 
   body {
-    @apply bg-white text-ink-900 antialiased;
+    @apply bg-ink-100 text-ink-900 antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 

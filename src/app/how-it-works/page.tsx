@@ -198,7 +198,7 @@ export default function HowItWorksPage() {
             Browse {CATEGORIES.length} categories and start designing in minutes.
           </p>
           <Link
-            href="/shop"
+            href="/categories"
             className="mt-6 inline-flex h-12 items-center gap-2 rounded-full bg-brand-600 px-6 text-sm font-semibold text-white transition-colors hover:bg-brand-500"
           >
             Browse the shop <ArrowRight size={15} />

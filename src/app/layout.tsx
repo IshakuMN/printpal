@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/components/cart-provider";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
+import { AppHeader } from "@/components/app-header";
+import { BottomNav } from "@/components/bottom-nav";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -17,11 +17,17 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: {
-    default: "Inksmith — Custom print, delivered",
+    default: "Inksmith — Print on demand",
     template: "%s · Inksmith",
   },
   description:
-    "Design your own stickers, apparel, photo prints, wall art and more. Inksmith prints, packs and delivers your custom order to your door.",
+    "Stickers, apparel, photo prints, wall art and more. Shop bold prints — made to order and delivered to your door.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
@@ -41,11 +47,13 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="flex min-h-screen flex-col font-sans">
+      <body className="font-sans antialiased">
         <CartProvider>
-          <SiteHeader />
-          <main className="flex-1">{children}</main>
-          <SiteFooter />
+          <div className="relative mx-auto min-h-screen w-full max-w-[430px] bg-white shadow-2xl ring-1 ring-ink-200/60">
+            <AppHeader />
+            <main className="pb-24">{children}</main>
+            <BottomNav />
+          </div>
         </CartProvider>
       </body>
     </html>

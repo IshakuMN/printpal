@@ -13,7 +13,7 @@ export default function NotFound() {
       </p>
       <div className="mt-7 flex justify-center gap-3">
         <Link
-          href="/shop"
+          href="/"
           className="inline-flex h-12 items-center gap-2 rounded-full bg-ink-950 px-6 text-sm font-semibold text-white hover:bg-ink-800"
         >
           Browse the shop <ArrowRight size={15} />
