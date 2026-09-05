@@ -27,7 +27,7 @@ export function BottomNav() {
 
   return (
     <nav className="sticky bottom-0 z-40 bg-gradient-to-t from-white via-white to-transparent px-4 pt-3 pb-5">
-      <div className="flex items-center gap-1 rounded-2xl bg-ink-950 p-1.5 shadow-lift">
+      <div className="flex items-center gap-1 rounded-full  bg-ink-950/90 p-1.5 shadow-lift">
         {TABS.map((tab) => {
           const active = isActive(pathname, tab.href);
           const Icon = tab.icon;
