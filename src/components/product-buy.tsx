@@ -76,18 +76,18 @@ export function ProductBuy({ product }: { product: Product }) {
                     type="button"
                     onClick={() => setOption(group.id, choice.id)}
                     className={cn(
-                      "cursor-pointer rounded-xl border px-3.5 py-2 text-sm font-semibold transition-colors",
+                      "cursor-pointer rounded-full px-4 py-2.5 text-sm font-semibold transition-colors",
                       selected
-                        ? "border-ink-950 bg-ink-950 text-white"
-                        : "border-ink-200 bg-white text-ink-800 hover:border-ink-400",
+                        ? "bg-ink-900 text-white"
+                        : "bg-ink-100 text-ink-900 hover:bg-ink-200",
                     )}
                   >
                     {choice.label}
                     {choice.price ? (
                       <span
                         className={cn(
-                          "ml-1.5 text-xs",
-                          selected ? "text-white/70" : "text-ink-500",
+                          "ml-1.5 text-xs font-medium",
+                          selected ? "text-white/70" : "text-ink-400",
                         )}
                       >
                         {choice.price > 0 ? "+" : ""}
@@ -101,9 +101,9 @@ export function ProductBuy({ product }: { product: Product }) {
           </div>
         ))}
 
-        <div className="flex items-center justify-between rounded-2xl bg-ink-50 p-4">
+        <div className="flex items-center justify-between rounded-3xl bg-ink-100 p-4">
           <div>
-            <p className="text-xs font-medium text-ink-500">Quantity</p>
+            <p className="text-xs font-semibold text-ink-900">Quantity</p>
             <div className="mt-2">
               <QuantityStepper
                 value={quantity}
@@ -114,10 +114,10 @@ export function ProductBuy({ product }: { product: Product }) {
             </div>
           </div>
           <div className="text-right">
-            <p className="text-xs text-ink-500">
+            <p className="text-xs text-ink-400">
               {formatMoney(unitPrice)} / {product.unitLabel}
             </p>
-            <p className="font-display text-xl font-bold text-ink-950">
+            <p className="text-xl font-bold text-ink-950">
               {formatMoney(subtotal)}
             </p>
             {savings > 0 && (
@@ -129,10 +129,10 @@ export function ProductBuy({ product }: { product: Product }) {
         </div>
       </div>
 
-      <div className="sticky bottom-24 z-30 mt-6 rounded-2xl border border-ink-100 bg-white/95 px-4 py-3 shadow-lift backdrop-blur">
+      <div className="sticky bottom-24 z-30 mt-6 rounded-3xl bg-white px-2 py-2 shadow-lift">
         <div className="flex items-center gap-3">
-          <div className="min-w-0 flex-1">
-            <p className="text-[11px] text-ink-500">
+          <div className="min-w-0 flex-1 pl-3">
+            <p className="text-[11px] text-ink-400">
               {formatMoney(unitPrice)} / {product.unitLabel}
               {savings > 0 && (
                 <span className="ml-1 font-bold text-brand-600">
@@ -140,7 +140,7 @@ export function ProductBuy({ product }: { product: Product }) {
                 </span>
               )}
             </p>
-            <p className="truncate font-display text-lg font-bold text-ink-950">
+            <p className="truncate text-lg font-bold text-ink-950">
               {formatMoney(subtotal)}
             </p>
           </div>

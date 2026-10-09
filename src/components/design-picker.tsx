@@ -4,51 +4,44 @@ import { PRODUCTS, getCategory } from "@/lib/data";
 
 export function DesignPicker() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-      <header className="max-w-2xl">
-        <p className="mb-2 text-xs font-semibold tracking-widest text-brand-600 uppercase">
-          Design studio
-        </p>
-        <h1 className="text-balance font-display text-4xl font-bold tracking-tight text-ink-950">
+    <div className="px-4 py-6">
+      <header>
+        <h1 className="text-balance text-2xl font-bold tracking-tight text-ink-950">
           What are you designing?
         </h1>
-        <p className="mt-3 text-pretty text-ink-600">
-          Pick a product to open the design canvas. Add text, photos and shapes,
-          then add it to your cart.
+        <p className="mt-1 text-sm text-ink-400">
+          Pick a product to open the canvas.
         </p>
       </header>
 
-      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {PRODUCTS.map((p) => {
+      <div className="mt-5 columns-2 gap-3 [&>*]:mb-3">
+        {PRODUCTS.map((p, i) => {
           const category = getCategory(p.categoryId);
           return (
             <Link
               key={p.id}
               href={`/design?product=${p.slug}`}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-ink-200 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-ink-300 hover:shadow-soft"
+              className="group block break-inside-avoid"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-ink-50">
+              <div className="overflow-hidden rounded-3xl bg-ink-100">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={p.image}
                   alt={p.name}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className={`w-full object-cover transition-transform duration-300 group-hover:scale-[1.03] ${i % 2 === 0 ? "aspect-[3/4]" : "aspect-square"}`}
                 />
-                <span className="absolute top-3 left-3 rounded-full bg-white/90 px-2.5 py-0.5 text-xs font-medium text-ink-700 backdrop-blur">
-                  {category?.shortName}
-                </span>
               </div>
-              <div className="flex flex-1 items-center justify-between gap-3 p-4">
-                <div>
-                  <h2 className="font-display text-base font-semibold text-ink-950">
+              <div className="flex items-center justify-between gap-2 px-1.5 pt-2 pb-1">
+                <div className="min-w-0">
+                  <h2 className="line-clamp-1 text-sm font-bold text-ink-900">
                     {p.name}
                   </h2>
-                  <p className="mt-0.5 line-clamp-1 text-sm text-ink-500">
-                    {p.tagline}
+                  <p className="text-xs text-ink-400">
+                    {category?.shortName}
                   </p>
                 </div>
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-ink-950 text-white transition-transform group-hover:translate-x-0.5">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white">
                   <ArrowRight size={15} />
                 </span>
               </div>

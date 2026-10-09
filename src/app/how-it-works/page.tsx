@@ -63,29 +63,24 @@ export default function HowItWorksPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <header className="mx-auto max-w-2xl text-center">
-        <p className="mb-2 text-xs font-semibold tracking-widest text-brand-600 uppercase">
-          Design → Print → Deliver
-        </p>
-        <h1 className="text-balance font-display text-4xl font-bold tracking-tight text-ink-950 sm:text-5xl">
+        <h1 className="text-balance text-4xl font-bold tracking-tight text-ink-950 sm:text-5xl">
           You design. We do the rest.
         </h1>
-        <p className="mt-4 text-pretty text-lg text-ink-600">
-          Inksmith is your one-stop custom print platform. We find the best way
-          to produce your order and get it to your address — you just make it
-          yours.
+        <p className="mt-4 text-pretty text-lg text-ink-400">
+          Pick a product, make it yours, we print and deliver.
         </p>
       </header>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-3">
+      <div className="mt-10 grid gap-3 sm:grid-cols-3">
         {STEPS.map((s) => (
           <div
             key={s.title}
-            className="rounded-2xl border border-ink-200 bg-white p-6"
+            className="rounded-3xl bg-ink-100 p-6"
           >
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
+            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-600 text-white">
               <s.icon size={20} />
             </span>
-            <h2 className="mt-4 font-display text-lg font-semibold text-ink-950">
+            <h2 className="mt-4 text-lg font-bold text-ink-950">
               {s.title}
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-ink-600">{s.body}</p>
@@ -189,19 +184,19 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="mx-auto mt-20 max-w-3xl">
-        <div className="rounded-3xl bg-ink-950 px-6 py-12 text-center">
-          <h2 className="text-balance font-display text-2xl font-bold text-white sm:text-3xl">
+      <section className="mx-auto mt-16 max-w-3xl">
+        <div className="rounded-3xl bg-brand-600 px-6 py-12 text-center">
+          <h2 className="text-balance text-2xl font-bold text-white sm:text-3xl">
             Ready to make something?
           </h2>
-          <p className="mx-auto mt-3 max-w-md text-sm text-ink-300">
-            Browse {CATEGORIES.length} categories and start designing in minutes.
+          <p className="mx-auto mt-2 max-w-md text-sm text-white/80">
+            Browse {CATEGORIES.length} categories and start in minutes.
           </p>
           <Link
             href="/categories"
-            className="mt-6 inline-flex h-12 items-center gap-2 rounded-full bg-brand-600 px-6 text-sm font-semibold text-white transition-colors hover:bg-brand-500"
+            className="mt-6 inline-flex h-12 items-center gap-2 rounded-full bg-white px-6 text-sm font-semibold text-ink-900 transition-colors hover:bg-ink-100"
           >
-            Browse the shop <ArrowRight size={15} />
+            Browse ideas <ArrowRight size={15} />
           </Link>
         </div>
       </section>

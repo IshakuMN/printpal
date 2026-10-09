@@ -14,10 +14,10 @@ type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "dark";
 
 const buttonVariants: Record<ButtonVariant, string> = {
   primary:
-    "bg-brand-600 text-white hover:bg-brand-700 shadow-sm active:bg-brand-800",
+    "bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800",
   secondary: "bg-ink-100 text-ink-900 hover:bg-ink-200",
   outline:
-    "border border-ink-300 bg-white text-ink-900 hover:border-ink-500 hover:bg-ink-50",
+    "border border-ink-200 bg-white text-ink-900 hover:bg-ink-50",
   ghost: "text-ink-700 hover:bg-ink-100 hover:text-ink-900",
   dark: "bg-ink-900 text-white hover:bg-ink-800",
 };
@@ -39,7 +39,7 @@ export function Button({
   return (
     <button
       className={cn(
-        "inline-flex cursor-pointer items-center justify-center rounded-full font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600 disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex cursor-pointer items-center justify-center rounded-full font-semibold transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600 disabled:cursor-not-allowed disabled:opacity-50",
         buttonVariants[variant],
         sizes[size],
         className,
@@ -79,7 +79,7 @@ export function Field({
 }
 
 const inputBase =
-  "w-full rounded-xl border border-ink-300 bg-white px-3.5 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-600/20";
+  "w-full rounded-2xl border border-ink-200 bg-white px-3.5 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-600/20";
 
 export function Input({
   className,
@@ -120,12 +120,12 @@ export function QuantityStepper({
   step?: number;
 }) {
   return (
-    <div className="inline-flex h-10 items-center overflow-hidden rounded-full border border-ink-300 bg-white">
+    <div className="inline-flex h-10 items-center overflow-hidden rounded-full bg-ink-100">
       <button
         type="button"
         aria-label="Decrease quantity"
         onClick={() => onChange(Math.max(min, value - step))}
-        className="flex h-10 w-10 cursor-pointer items-center justify-center text-ink-600 transition-colors hover:bg-ink-100 disabled:cursor-not-allowed disabled:opacity-40"
+        className="flex h-10 w-10 cursor-pointer items-center justify-center text-ink-900 transition-colors hover:bg-ink-200 disabled:cursor-not-allowed disabled:opacity-40"
         disabled={value <= min}
       >
         <Minus size={15} />
@@ -144,7 +144,7 @@ export function QuantityStepper({
         type="button"
         aria-label="Increase quantity"
         onClick={() => onChange(Math.min(max, value + step))}
-        className="flex h-10 w-10 cursor-pointer items-center justify-center text-ink-600 transition-colors hover:bg-ink-100 disabled:cursor-not-allowed disabled:opacity-40"
+        className="flex h-10 w-10 cursor-pointer items-center justify-center text-ink-900 transition-colors hover:bg-ink-200 disabled:cursor-not-allowed disabled:opacity-40"
         disabled={value >= max}
       >
         <Plus size={15} />
@@ -191,15 +191,15 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <p className="mb-2 text-xs font-semibold tracking-widest text-brand-600 uppercase">
+        <p className="mb-2 text-sm font-semibold text-ink-400">
           {eyebrow}
         </p>
       )}
-      <h2 className="text-balance font-display text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">
+      <h2 className="text-balance text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">
         {title}
       </h2>
       {description && (
-        <p className="mt-3 text-pretty text-base leading-relaxed text-ink-600">
+        <p className="mt-3 text-pretty text-base leading-relaxed text-ink-400">
           {description}
         </p>
       )}

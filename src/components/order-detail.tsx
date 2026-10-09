@@ -64,7 +64,7 @@ export function OrderDetail({ orderId }: { orderId: string }) {
           </p>
           <Link
             href="/orders"
-            className="mt-6 inline-flex h-12 items-center gap-2 rounded-full bg-ink-950 px-6 text-sm font-semibold text-white hover:bg-ink-800"
+            className="mt-6 inline-flex h-12 items-center gap-2 rounded-full bg-brand-600 px-6 text-sm font-semibold text-white hover:bg-brand-700"
           >
             View my orders <ArrowRight size={15} />
           </Link>

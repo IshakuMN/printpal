@@ -41,7 +41,7 @@ export function ProductFeed({
   return (
     <div>
       {!lockedCategory && (
-        <div className="px-4 pt-4">
+        <div className="px-4 pt-2">
           <label className="relative block">
             <Search
               size={17}
@@ -50,15 +50,15 @@ export function ProductFeed({
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search stickers, prints, tees…"
-              className="h-11 w-full rounded-full border-0 bg-ink-100 pl-11 pr-4 text-sm text-ink-900 placeholder:text-ink-400 focus:bg-white focus:ring-2 focus:ring-brand-600/30 focus:outline-none"
+              placeholder="Search ideas"
+              className="h-12 w-full rounded-full border-0 bg-ink-100 pr-4 pl-11 text-sm text-ink-900 placeholder:text-ink-400 hover:bg-ink-200/70 focus:bg-white focus:ring-2 focus:ring-brand-600/40 focus:outline-none"
             />
           </label>
         </div>
       )}
 
       {showChips && (
-        <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto px-4">
+        <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto px-4 pb-1">
           <Chip
             active={category === "all"}
             onClick={() => setCategory("all")}
@@ -79,11 +79,11 @@ export function ProductFeed({
 
       {results.length === 0 ? (
         <div className="px-8 py-16 text-center">
-          <p className="font-display text-base font-bold text-ink-900">
-            Nothing matches
+          <p className="text-xl font-bold text-ink-900">
+            No ideas found
           </p>
-          <p className="mt-1 text-sm text-ink-500">
-            Try a different word or category.
+          <p className="mt-1 text-sm text-ink-400">
+            Try a different search.
           </p>
           <button
             type="button"
@@ -91,15 +91,15 @@ export function ProductFeed({
               setQuery("");
               setCategory("all");
             }}
-            className="mt-4 cursor-pointer rounded-full bg-ink-950 px-5 py-2.5 text-sm font-semibold text-white"
+            className="mt-5 h-12 cursor-pointer rounded-full bg-brand-600 px-6 text-sm font-semibold text-white hover:bg-brand-700"
           >
             Clear search
           </button>
         </div>
       ) : (
-        <div className="mt-4 grid grid-cols-2 gap-x-3 gap-y-5 px-4">
-          {results.map((p) => (
-            <ProductCard key={p.id} product={p} />
+        <div className="mt-3 columns-2 gap-3 px-4 [&>*]:mb-3">
+          {results.map((p, i) => (
+            <ProductCard key={p.id} product={p} index={i} />
           ))}
         </div>
       )}
@@ -121,10 +121,10 @@ function Chip({
       type="button"
       onClick={onClick}
       className={cn(
-        "h-9 shrink-0 cursor-pointer rounded-full px-4 text-sm font-semibold transition-colors",
+        "h-10 shrink-0 cursor-pointer rounded-full px-4 text-sm font-semibold transition-colors",
         active
-          ? "bg-ink-950 text-white"
-          : "bg-ink-100 text-ink-700 hover:bg-ink-200",
+          ? "bg-ink-900 text-white"
+          : "bg-ink-100 text-ink-900 hover:bg-ink-200",
       )}
     >
       {children}

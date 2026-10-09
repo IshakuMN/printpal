@@ -32,15 +32,12 @@ export default async function CategoryPage({
   const products = getProductsByCategory(category.id);
 
   return (
-    <div className="pt-5">
+    <div className="pt-4">
       <div className="px-4">
-        <p className="text-xs font-bold tracking-widest text-brand-600 uppercase">
-          {products.length} products
-        </p>
-        <h1 className="mt-1 font-display text-2xl font-bold tracking-tight text-ink-950">
+        <h1 className="text-2xl font-bold tracking-tight text-ink-950">
           {category.name}
         </h1>
-        <p className="mt-1 text-sm text-ink-500">{category.description}</p>
+        <p className="mt-1 text-sm text-ink-400">{category.description}</p>
       </div>
 
       <ProductFeed

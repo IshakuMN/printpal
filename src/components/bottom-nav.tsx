@@ -8,9 +8,9 @@ import { cn } from "./ui";
 
 const TABS = [
   { href: "/", label: "Home", icon: House },
-  { href: "/categories", label: "Categories", icon: LayoutGrid },
+  { href: "/categories", label: "Shop", icon: LayoutGrid },
   { href: "/cart", label: "Cart", icon: ShoppingBag },
-  { href: "/profile", label: "Profile", icon: UserRound },
+  { href: "/profile", label: "Saved", icon: UserRound },
 ];
 
 function isActive(pathname: string, href: string) {
@@ -26,8 +26,8 @@ export function BottomNav() {
   const count = isLoaded ? itemCount : 0;
 
   return (
-    <nav className="sticky bottom-0 z-40 bg-gradient-to-t from-white via-white to-transparent px-4 pt-3 pb-5">
-      <div className="flex items-center gap-1 rounded-full  bg-ink-950/90 p-1.5 shadow-lift">
+    <nav className="fixed inset-x-0 bottom-0 z-40 mx-auto w-full max-w-[430px] border-t border-ink-100 bg-white/95 backdrop-blur-md">
+      <div className="flex items-center px-2 pt-1 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         {TABS.map((tab) => {
           const active = isActive(pathname, tab.href);
           const Icon = tab.icon;
@@ -36,21 +36,25 @@ export function BottomNav() {
               key={tab.href}
               href={tab.href}
               className={cn(
-                "relative flex flex-1 flex-col items-center gap-0.5 rounded-xl py-2 transition-colors",
-                active ? "text-brand-500" : "text-white/50 hover:text-white/80",
+                "relative flex flex-1 flex-col items-center gap-1 rounded-2xl py-2 transition-colors",
+                active ? "text-ink-900" : "text-ink-400 hover:text-ink-600",
               )}
             >
               <span className="relative">
-                <Icon size={21} strokeWidth={active ? 2.4 : 2} />
+                <Icon size={22} strokeWidth={active ? 2.5 : 2} />
                 {tab.href === "/cart" && count > 0 && (
-                  <span className="absolute -top-1.5 -right-2.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-500 px-1 text-[10px] font-bold text-white">
+                  <span className="absolute -top-1.5 -right-2.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-600 px-1 text-[10px] font-bold text-white">
                     {count > 99 ? "99+" : count}
                   </span>
                 )}
               </span>
-              <span className="text-[10px] font-semibold tracking-tight">
-                {tab.label}
-              </span>
+              <span className="text-[11px] font-semibold">{tab.label}</span>
+              <span
+                className={cn(
+                  "h-1 w-1 rounded-full transition-colors",
+                  active ? "bg-brand-600" : "bg-transparent",
+                )}
+              />
             </Link>
           );
         })}
