@@ -3,7 +3,7 @@ import { ProductFeed } from "@/components/product-feed";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="py-2 sm:py-6">
       <ProductFeed products={PRODUCTS} categories={CATEGORIES} />
     </div>
   );

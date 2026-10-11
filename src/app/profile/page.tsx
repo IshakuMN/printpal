@@ -27,7 +27,7 @@ export default function ProfilePage() {
   const orderCount = orders?.length ?? 0;
 
   return (
-    <div className="px-4 pt-6 pb-4">
+    <div className="mx-auto w-full max-w-3xl px-4 pt-6 pb-10 sm:px-6 lg:py-10">
       <div className="flex flex-col items-center pt-2 text-center">
         <span className="flex h-24 w-24 items-center justify-center rounded-full bg-brand-600 text-4xl font-bold text-white">
           G

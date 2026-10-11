@@ -129,7 +129,19 @@ export function ProductBuy({ product }: { product: Product }) {
         </div>
       </div>
 
-      <div className="sticky bottom-24 z-30 mt-6 rounded-3xl bg-white px-2 py-2 shadow-lift">
+      <div className="mt-6 hidden lg:block">
+        <Button
+          size="lg"
+          className="w-full"
+          disabled={adding}
+          onClick={addToCart}
+        >
+          <ShoppingBag size={16} />
+          {adding ? "Adding…" : `Add to cart — ${formatMoney(subtotal)}`}
+        </Button>
+      </div>
+
+      <div className="sticky bottom-24 z-30 mt-6 rounded-3xl bg-white px-2 py-2 shadow-lift lg:hidden">
         <div className="flex items-center gap-3">
           <div className="min-w-0 flex-1 pl-3">
             <p className="text-[11px] text-ink-400">

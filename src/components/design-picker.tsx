@@ -4,17 +4,17 @@ import { PRODUCTS, getCategory } from "@/lib/data";
 
 export function DesignPicker() {
   return (
-    <div className="px-4 py-6">
-      <header>
-        <h1 className="text-balance text-2xl font-bold tracking-tight text-ink-950">
+    <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:py-10">
+      <header className="max-w-2xl">
+        <h1 className="text-balance text-2xl font-bold tracking-tight text-ink-950 sm:text-3xl">
           What are you designing?
         </h1>
-        <p className="mt-1 text-sm text-ink-400">
+        <p className="mt-1 text-sm text-ink-400 sm:text-base">
           Pick a product to open the canvas.
         </p>
       </header>
 
-      <div className="mt-5 columns-2 gap-3 [&>*]:mb-3">
+      <div className="mt-5 columns-2 gap-3 sm:columns-3 lg:columns-4 [&>*]:mb-3">
         {PRODUCTS.map((p, i) => {
           const category = getCategory(p.categoryId);
           return (

@@ -15,7 +15,7 @@ import { SectionHeading } from "@/components/ui";
 export const metadata: Metadata = {
   title: "How it works",
   description:
-    "Design your product, we produce it and deliver it to your door. See how Inksmith works.",
+    "Design your product, we produce it and deliver it to your door. See how PrintPal works.",
 };
 
 const STEPS = [
@@ -27,7 +27,7 @@ const STEPS = [
   {
     icon: Factory,
     title: "We produce it",
-    body: "Once ordered, we source the right printer, materials and finishes for your product — stickers, apparel, prints, banners and more — and quality-check every piece.",
+    body: "Once ordered, we source the right printer, materials and finishes for your product — tattoos, shirts, photos, passport photos, banners and more — and quality-check every piece.",
   },
   {
     icon: Truck,
@@ -97,7 +97,7 @@ export default function HowItWorksPage() {
         <div className="mx-auto mt-8 grid max-w-4xl gap-x-10 gap-y-4 sm:grid-cols-2">
           {[
             "Matching your product to the right printing process",
-            "Sourcing materials — vinyl, cotton, canvas, aluminium and more",
+            "Sourcing materials — tattoo film, cotton, photo paper, vinyl and more",
             "Print-ready file checks and colour correction",
             "Proof approval before production",
             "Production and packing",
@@ -130,23 +130,23 @@ export default function HowItWorksPage() {
             </thead>
             <tbody className="divide-y divide-ink-100">
               <tr>
-                <td className="px-5 py-3.5">Stickers &amp; stationery</td>
-                <td className="px-5 py-3.5">2–5 days</td>
+                <td className="px-5 py-3.5">Tattoos &amp; photo prints</td>
+                <td className="px-5 py-3.5">1–4 days</td>
                 <td className="px-5 py-3.5">5–9 days (standard)</td>
               </tr>
               <tr>
-                <td className="px-5 py-3.5">Photo prints &amp; wall art</td>
-                <td className="px-5 py-3.5">2–8 days</td>
+                <td className="px-5 py-3.5">Passport photos</td>
+                <td className="px-5 py-3.5">1–2 days</td>
                 <td className="px-5 py-3.5">5–9 days (standard)</td>
               </tr>
               <tr>
-                <td className="px-5 py-3.5">Apparel &amp; gifts</td>
-                <td className="px-5 py-3.5">3–8 days</td>
+                <td className="px-5 py-3.5">Shirts</td>
+                <td className="px-5 py-3.5">4–7 days</td>
                 <td className="px-5 py-3.5">5–9 days (standard)</td>
               </tr>
               <tr>
-                <td className="px-5 py-3.5">Banners &amp; signage</td>
-                <td className="px-5 py-3.5">3–6 days</td>
+                <td className="px-5 py-3.5">Ad banners</td>
+                <td className="px-5 py-3.5">3–5 days</td>
                 <td className="px-5 py-3.5">5–9 days (standard)</td>
               </tr>
             </tbody>

@@ -1,9 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search } from "lucide-react";
 import type { Category, Product } from "@/lib/types";
 import { ProductCard } from "./product-card";
+import { useSearch } from "./search-provider";
 import { cn } from "./ui";
 
 export function ProductFeed({
@@ -17,7 +17,7 @@ export function ProductFeed({
   initialCategory?: string;
   lockedCategory?: boolean;
 }) {
-  const [query, setQuery] = useState("");
+  const { query, setQuery } = useSearch();
   const [category, setCategory] = useState(initialCategory);
 
   const results = useMemo(() => {
@@ -39,26 +39,9 @@ export function ProductFeed({
   const showChips = !lockedCategory || category === "all";
 
   return (
-    <div>
-      {!lockedCategory && (
-        <div className="px-4 pt-2">
-          <label className="relative block">
-            <Search
-              size={17}
-              className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-ink-400"
-            />
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search ideas"
-              className="h-12 w-full rounded-full border-0 bg-ink-100 pr-4 pl-11 text-sm text-ink-900 placeholder:text-ink-400 hover:bg-ink-200/70 focus:bg-white focus:ring-2 focus:ring-brand-600/40 focus:outline-none"
-            />
-          </label>
-        </div>
-      )}
-
+    <div className="mx-auto w-full max-w-7xl">
       {showChips && (
-        <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto px-4 pb-1">
+        <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto px-4 pb-1 sm:px-6 lg:flex-wrap">
           <Chip
             active={category === "all"}
             onClick={() => setCategory("all")}
@@ -97,7 +80,7 @@ export function ProductFeed({
           </button>
         </div>
       ) : (
-        <div className="mt-3 columns-2 gap-3 px-4 [&>*]:mb-3">
+        <div className="mt-3 columns-2 gap-3 px-4 sm:columns-3 sm:px-6 lg:columns-4 xl:columns-5 [&>*]:mb-3">
           {results.map((p, i) => (
             <ProductCard key={p.id} product={p} index={i} />
           ))}

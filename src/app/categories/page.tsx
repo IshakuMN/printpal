@@ -5,20 +5,20 @@ import { CATEGORIES, getProductsByCategory } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Categories",
   description:
-    "Browse every category we print — stickers, apparel, photo prints, wall art, banners and gifts.",
+    "Browse every category we print — tattoos, ad banners, shirts, photo prints and passport photos.",
 };
 
 export default function CategoriesPage() {
   return (
-    <div className="px-4 pt-4 pb-2">
-      <h1 className="text-2xl font-bold tracking-tight text-ink-950">
+    <div className="mx-auto w-full max-w-7xl px-4 pt-6 pb-10 sm:px-6">
+      <h1 className="text-2xl font-bold tracking-tight text-ink-950 sm:text-3xl">
         Shop ideas
       </h1>
-      <p className="mt-1 text-sm text-ink-400">
+      <p className="mt-1 text-sm text-ink-400 sm:text-base">
         Pick a board to explore.
       </p>
 
-      <div className="mt-4 columns-2 gap-3 [&>*]:mb-4">
+      <div className="mt-6 columns-2 gap-4 sm:columns-3 lg:columns-4 [&>*]:mb-4">
         {CATEGORIES.map((c, i) => {
           const count = getProductsByCategory(c.id).length;
           return (
@@ -37,10 +37,10 @@ export default function CategoriesPage() {
                 />
               </div>
               <div className="mt-2 px-1.5">
-                <h2 className="text-sm font-bold text-ink-900">
+                <h2 className="text-sm font-bold text-ink-900 sm:text-base">
                   {c.name}
                 </h2>
-                <p className="text-xs text-ink-400">
+                <p className="text-xs text-ink-400 sm:text-sm">
                   {count} ideas
                 </p>
               </div>

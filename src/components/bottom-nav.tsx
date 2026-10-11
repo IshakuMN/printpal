@@ -26,7 +26,7 @@ export function BottomNav() {
   const count = isLoaded ? itemCount : 0;
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-40 mx-auto w-full max-w-[430px] border-t border-ink-100 bg-white/95 backdrop-blur-md">
+    <nav className="fixed inset-x-0 bottom-0 z-40 bg-white/95 backdrop-blur-md border-t border-ink-100 lg:hidden">
       <div className="flex items-center px-2 pt-1 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         {TABS.map((tab) => {
           const active = isActive(pathname, tab.href);

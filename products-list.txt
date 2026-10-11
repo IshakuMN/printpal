@@ -1,0 +1,42 @@
+PRINTS STORE - FULL PRODUCT LIST (reference for later expansion)
+Saved: 2026-10-11
+Currently active (launch with these 5):
+1. Temporary Tattoos - temporary-tattoos
+2. Ad Banners - ad-banners
+3. T-Shirts - t-shirts
+4. Photo Prints - photo-prints
+5. Passport Photos - passport-photos
+
+PARKED FOR LATER (re-add after the first 5 are established):
+Categories:
+- Stickers & Labels (stickers)
+- Stationery & Cards (stationery)
+- Apparel (apparel) - keep T-Shirts active, parked: Hoodies, Tote Bags
+- Photo Prints (photo) - keep Photo Prints active, parked: Photo Books
+- Wall Art (wall-art)
+- Banners & Signage (signage) - keep Vinyl/Ad Banners active, parked: Roll-Up Banners
+- Gifts & Home (gifts)
+
+Products (16 total in original catalog):
+1. Die-Cut Stickers (die-cut-stickers) - stickers - ACTIVE CATALOG, PARKED
+2. Sticker Sheets (sticker-sheets) - stickers - PARKED
+3. Business Cards (business-cards) - stationery - PARKED
+4. Flyers (flyers) - stationery - PARKED
+5. Wedding Invitations (invitations) - stationery - PARKED
+6. T-Shirts (t-shirts) - apparel - ACTIVE (1 of 5)
+7. Hoodies (hoodies) - apparel - PARKED
+8. Tote Bags (tote-bags) - apparel - PARKED
+9. Photo Prints (photo-prints) - photo - ACTIVE (1 of 5)
+10. Photo Books (photo-books) - photo - PARKED
+11. Canvas Prints (canvas-prints) - wall-art - PARKED
+12. Framed Prints (framed-prints) - wall-art - PARKED
+13. Posters (posters) - wall-art - PARKED
+14. Vinyl Banners / Ad Banners (vinyl-banners / ad-banners) - signage - ACTIVE (1 of 5)
+15. Roll-Up Banners (roll-up-banners) - signage - PARKED
+16. Ceramic Mugs (ceramic-mugs) - gifts - PARKED
+
+New products created for launch 5 (no original equivalent, newly added):
+- Temporary Tattoos (temporary-tattoos) - tattoos - ACTIVE, NEW
+- Passport Photos (passport-photos) - passport - ACTIVE, NEW
+
+To re-add later: copy the product definitions from git history of src/lib/data.ts (commit before 2026-10-11) and append to PRODUCTS array, plus restore CATEGORIES.
